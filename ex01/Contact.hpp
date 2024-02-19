@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/18 19:56:43 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/19 23:39:07 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ class Contact
 		std::string	nickname;
 		std::string	phoneNumber;
 		std::string	darkestSecret;
+
+		std::string	get_field(const std::string &prompt);
+		
 	public:
 		void		init();
 		void		print(std::ostream &stream) const;

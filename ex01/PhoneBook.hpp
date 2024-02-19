@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/18 20:49:40 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:11:50 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@
 class PhoneBook
 {
 	private:
-		Contact		contacts[CONTACT_COUNT];
-		t_uint		contacts_count;
-		t_uint		index;
+		Contact			contacts[CONTACT_COUNT];
+		t_uint			contacts_count;
+		t_uint			index;
+
+		std::string		resume_string(std::string str) const;
+
 	public:
-				PhoneBook();
-		void	run();
-		void	add();
-		void	search();
-		void	exit();
+						PhoneBook();
+		void			run();
+		void			add();
+		void			search() const;
 };
 
 #endif

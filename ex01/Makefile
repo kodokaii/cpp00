@@ -18,8 +18,8 @@ OBJ 		= $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CCPP) $(CPPFLAGS) -o $(NAME) $(OBJ) $(CPPLINKS)
+$(NAME): $(KDOLIB) $(OBJ)
+	$(CCPP) $(CPPFLAGS) -o $(NAME) $(OBJ) $(KDOLIB) $(CPPLINKS)
 
 $(KDOLIB): $(KDO)
 	$(MAKE) -C $(KDO)
@@ -31,14 +31,19 @@ $(KDO):
 	$(CCPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
+	if [ -d "$(KDO)" ]; then $(MAKE) clean -C $(KDO); fi
 	$(RM) $(OBJ)
 
 fclean: clean
+	$(RM) $(KDOLIB)
 	$(RM) $(NAME)
+
+clear: fclean
+	$(RM) -r $(KDO)
 
 re: fclean all
 
 fast: fclean
 	$(MAKE) -j$$(nproc)
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean clear re

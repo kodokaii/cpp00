@@ -6,19 +6,28 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/18 19:59:01 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/19 23:45:14 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+std::string	Contact::get_field(const std::string &prompt)
+{
+	std::string	field;
+
+	while (field.empty())
+		kdo::userinput(prompt, field);
+	return (field);
+}
+
 void			Contact::init()
 {
-	kdo::get_userInput<std::string>("first name: ", this->firstName);
-	kdo::get_userInput<std::string>("last name: ", this->lastName);
-	kdo::get_userInput<std::string>("nickname: ", this->nickname);
-	kdo::get_userInput<std::string>("phone number: ", this->phoneNumber);
-	kdo::get_userInput<std::string>("darkest secret: ", this->darkestSecret);
+	this->firstName = Contact::get_field("first name: ");
+	this->lastName = Contact::get_field("last name: ");
+	this->nickname = Contact::get_field("nickname: ");
+	this->phoneNumber = Contact::get_field("phone number: ");
+	this->darkestSecret = Contact::get_field("darkest secret: ");
 }
 
 void			Contact::print(std::ostream &stream) const
