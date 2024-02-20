@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/20 15:29:15 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:37:26 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,15 @@ void	Account::_displayTimestamp( void )
 	std::time_t	time(std::time(NULL));
 	struct tm	*time_info(std::localtime(&time));
 
-	std::cout << '[' << time_info->tm_year + 1900;
+	std::cout << '['; 
+	std::cout << std::setfill('0') << std::setw(4) << time_info->tm_year + 1900;
 	std::cout << std::setfill('0') << std::setw(2) << time_info->tm_mon;
-	std::cout << time_info->tm_mday << '_';
-	std::cout << time_info->tm_hour << time_info->tm_min << time_info->tm_sec << "] ";
+	std::cout << std::setfill('0') << std::setw(2) << time_info->tm_mday;
+	std::cout << '_';
+	std::cout << std::setfill('0') << std::setw(2) << time_info->tm_hour;
+	std::cout << std::setfill('0') << std::setw(2) << time_info->tm_min;
+	std::cout << std::setfill('0') << std::setw(2) << time_info->tm_sec;
+	std::cout << "] ";
 }
 
 		Account::Account( void )
