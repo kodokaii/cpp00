@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/19 23:09:39 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:09:19 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,29 @@ void	PhoneBook::search() const
 {
 	t_uint	i;
 	
-	i = 0;
-	while (i < this->contacts_count)
+	if (this->contacts_count)
 	{
-		std::cout << std::setw(10) << i << '|';
-		std::cout << PhoneBook::resume_string(this->contacts[i].get_firstName()) << '|';
-		std::cout << PhoneBook::resume_string(this->contacts[i].get_lastName())  << '|';
-		std::cout << PhoneBook::resume_string(this->contacts[i].get_nickname())  << '|';
-		std::cout << std::endl;
-		i++;
+		i = 0;
+		while (i < this->contacts_count)
+		{
+			std::cout << std::setw(10) << i << '|';
+			std::cout << PhoneBook::resume_string(this->contacts[i].get_firstName()) << '|';
+			std::cout << PhoneBook::resume_string(this->contacts[i].get_lastName())  << '|';
+			std::cout << PhoneBook::resume_string(this->contacts[i].get_nickname())  << '|';
+			std::cout << std::endl;
+			i++;
+		}
+		while (true)
+		{
+			if (kdo::userinput("index : ", i))
+				std::cerr << "Invalid index !" << std::endl;
+			else if (this->contacts_count <= i)
+				std::cerr << "Index out of range !" << std::endl;
+			else
+				break ;
+		}
+		std::cout << this->contacts[i];
 	}
-	while (true)
-	{
-		if (kdo::userinput("index : ", i))
-			std::cerr << "Invalid index !" << std::endl;
-		else if (this->contacts_count <= i)
-			std::cerr << "Index out of range !" << std::endl;
-		else
-			break ;
-	}
-	std::cout << this->contacts[i];
+	else
+		std::cerr << "no contacts to display" << std::endl;
 }
