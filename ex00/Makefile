@@ -1,6 +1,6 @@
 NAME 		= megaphone
 
-CCPP		= g++
+CCPP		= c++
 RM			= rm -f
 CLONE 		= git clone --depth=1
 
